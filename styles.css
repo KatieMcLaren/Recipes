@@ -12,19 +12,24 @@ orange---#EB5428
 html{
     background-color: rgba(122, 191, 191, .5);
     color: #0d0d0d;
+    position:relative;
 }
 body{
     margin:0 auto;
     background-color: #f2f2f2;
-    width:45%;
-    text-align: center;
+    width:75%;
 }
 h1{
     text-transform: uppercase;
     font-size: 40px;
-    padding-top:20px
+    padding-top:50px;
+    text-align: center;
+    
 }
-h1, h2, h3, nav a, nav span, menu li, #social li, footer{
+h2{
+    text-align: center;
+}
+h1, h2, h3, nav a, nav span, menu li, .social-media-container li, footer, .link-menu li{
     font-family: 'Bebas Neue', sans-serif;
 }
 p, dd, li, nav, input{
@@ -32,20 +37,23 @@ p, dd, li, nav, input{
     font-size: 16px;
 }
 /*-------Navigation-------*/
-.top-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+header{
+    width:75%;
+    background-color: #f2f2f2;
+    z-index: 100;
 }
-.top-nav h2{
+#topnav-gridwrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    top:25px;
+    width:100%;
+    text-align: center;
+}
+#main-nav-header{
     visibility: hidden;
-    height:1px;
+    height:0;
 }
-.nav-menu{
-    display:none;
-}
-.nav-menu > li {
+#nav-menu > li {
     margin: 0 1rem;
     overflow: hidden;
 }
@@ -56,38 +64,60 @@ p, dd, li, nav, input{
 #hamburger-toggle{
     display: none;
 }
-
+#hamburger-toggle:checked ~ #nav-menu{
+    height:250px;
+}
+#nav-menu{
+    display: none;
+}
+.fork-logo{
+    background-color: #EB5428;
+    padding:10px;
+}
+.search-textbox{
+    background-color: white;
+    width:200px;
+    height:30px;
+    border: #EB5428 1px solid;
+    padding-top: 5px;
+}
 /*-------Link Menu---------*/
 .link-menu{
+    margin-bottom: 10px;
+    padding:10px;
+}
+.link-menu ul{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows: auto;
     width:100%;
+    height:100%;
     margin:0;
+    padding:0;
     text-align: center;
 }
-.link-menu>p{
+.link-menu li{
+    font-size: 20px;
     margin:0;
-}
-.link-menu>p{
     color:#EB5428;
     text-transform: uppercase;
     font-weight: 700;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    list-style: none;
+    padding-top: 10px;
+
 }
 .icon1{
-    grid-column: 1/2;
+    grid-column: 1;
     grid-row: 1;
     margin-left: 50px;
 }
 .icon2{
-    grid-column: 2/3;
+    grid-column: 2;
     grid-row: 1;
     margin-left: 50px;
 }
 .icon3{
-    grid-column: 3/4;
+    grid-column: 3;
     grid-row: 1;
     margin-left: 50px;
 }
@@ -98,11 +128,15 @@ p, dd, li, nav, input{
 }
 
 /*-------Street Tacos-------*/
-.street-tacos img{
+.street-tacos-container{
+    width:100%;
+    margin:0;
+}
+.street-tacos-container img{
     width:100%;
     height:100%;
 }
-.street-tacos p{
+.street-tacos-container p{
     width:95%;
     text-align: left;
     margin:0;
@@ -141,6 +175,10 @@ p, dd, li, nav, input{
 }
 
 /*-------Directions-------*/
+.directions{
+    width:100%;
+    padding:5px;
+}
 .directions h2{
     font-size: 30px;
     margin-top: 5px;
@@ -150,45 +188,52 @@ p, dd, li, nav, input{
 .directions li{
     text-align: left;
     margin: 0;
-    padding:10px;
+    padding:5px 0;
 }
 
 /*-------Side Dishes-------*/
-.side-dishes{
+.side-dishes-wrapper{
     display:block;
     width:100%;
     background-color: #7ABFBF;
     position:relative;
-    text-align: left;
-
+    text-align: center;
+    padding-bottom: 20px;
 }
-.side-dishes h2{
+.side-dishes-wrapper h2{
     font-size: 30px;
     margin-top:10px;
     padding:10px;
     text-align: center;
+    grid-column: 1/3;
 }
-.side-dishes figure > img{
+.side-dishes-wrapper>h3, .side-dishes-wrapper>p{
     margin:0;
-    max-width:40%;
-    max-height:40%;
+    padding:0px;
 }
-figure .rating{
+.side-dishes-wrapper>p{
+    clear: both;
+}
+
+.side-dishes-wrapper img{
+    margin:0;
+    padding-left:20px;
+    width:150px;
+    height:150px;
+    float:left;
+}
+.side-dishes-wrapper .rating{
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
+    clear: both;
+    padding:0;
+    margin:0;
 }
-figure .red{
+.red{
     fill: red;
     border:white;
 }
 
-/*-------social-media-links-----*/
-.social-media-links{
-    width:100%;
-    display:flex;
-    margin:0;
-    justify-content: space-evenly;
-}
 
 /*-------Footer-------*/
 footer{
@@ -225,18 +270,18 @@ footer>.footer-name{
     left:210px;
     text-transform: uppercase;
 }
-.social-media-container{
+.social-media-container ul{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     width:100%;
     margin:0;
-    padding-top: 30px;
-    padding-bottom: 10px;
     text-align: center;
+    list-style: none;
 }
-.social-media-container>p{
+.social-media-container li{
     color:#EB5428;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
     margin:0;
@@ -263,4 +308,188 @@ footer>.footer-name{
     grid-row: 1;
     margin-left: 50px;
 }
+/*--------Medi Queries----------*/
+@media (min-width:768px) {
+    h1{
+        text-align: left;
+    }
+    .details>p{
+        text-align: center;
+    }
+    .details{
+        padding-bottom: 5px;
+    }
+    .ingredient-direction{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+    .side-dishes-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 2fr;
+        position: relative;
+        gap: 5px;
+    }
+    .side-dishes-wrapper>h2{
+        grid-column: 1/5;
+    }
+    .side-dish-1{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .side-dish-2{
+        grid-column: 3;
+        grid-row: 3;
+    }
+    .side-dish-3{
+        grid-column: 1;
+        grid-row: 4;
+    }
+    .side-dish-4{
+        grid-column: 3;
+        grid-row: 4;
+    }
+    .sd-header-1{
+        grid-column: 1/3;
+        grid-row: 2;
+    }
+    .sd-header-2{
+        grid-column: 3/5;
+        grid-row: 2;
+    }
+    .sd-header-3{
+        grid-column: 1/3;
+        grid-row: 4;
+    }
+    .sd-header-4{
+        grid-column: 3/5;
+        grid-row: 4;
+    }
+    .rating{
+        grid-row: 5;
+    }
+    header>label{
+        display: none;
+    }
+    #topnav-gridwrapper{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap:3px;
+        grid-auto-rows:auto;
+        margin:0;
+    }
 
+    #nav-menu{
+        display: grid;
+        grid-template-columns: repeat(7,100px);
+        width:max-content;
+    }
+    #nav-menu li{
+        width:100px;
+    }
+    #nav-menu li>img{
+        width:75px;
+        height:75px;
+    }
+}
+
+@media (min-width:1200px){
+    .street-tacos-container{
+        display: grid;
+        grid-template-columns: 1fr 2fr 3fr;
+    }
+    .street-tacos-container>h1{
+        grid-column: 1/4;
+        text-align: center;
+    }
+    .link-menu>ul{
+        display: flex;
+        flex-direction: column;
+        border:#EB5428 1px solid;
+    }
+    .details{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        background-color: #0d0d0d;
+        color:#7ABFBF;
+    }
+    .details>h2{
+        grid-column: 1/6;
+        grid-row: 1;
+    }
+    .ingredient-direction{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+    .side-dishes-wrapper img{
+        float:none;
+    }
+    .side-dishes-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        position: relative;
+        text-align: left;
+    }
+    .side-dishes-wrapper p, .side-dishes-wrapper h3{
+        padding: 5px 10px;
+    }
+    .side-dishes-wrapper>h2{
+        grid-column: 1/5;
+        grid-row: 1;
+    }
+    .side-dish-1{
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .side-dish-2{
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .side-dish-3{
+        grid-column: 3;
+        grid-row: 2;
+    }
+    .side-dish-4{
+        grid-column: 4;
+        grid-row: 2;
+    }
+    .sd-header-1{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .sd-header-2{
+        grid-column: 2;
+        grid-row: 3;
+    }
+    .sd-header-3{
+        grid-column: 3;
+        grid-row: 3;
+    }
+    .sd-header-4{
+        grid-column: 4;
+        grid-row: 3;
+    }
+    .rating{
+        grid-row:5;
+    }
+    header>label{
+        display: none;
+    }
+    #topnav-gridwrapper{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap:3px;
+    }
+
+    #nav-menu{
+        display: grid;
+        grid-template-columns: repeat(7,100px);
+        width:max-content;
+    }
+    #nav-menu li{
+        width:100px;
+    }
+    #nav-menu li>img{
+        width:75px;
+        height:75px;
+    }
+}
